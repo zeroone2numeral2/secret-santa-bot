@@ -1,13 +1,9 @@
 import logging
 import logging.config
 import json
-import re
-from datetime import timedelta
 from html import escape
 
 from pyrogram import Message
-
-from config import config
 
 
 def load_logging_config(file_name='logging.json'):
