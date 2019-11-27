@@ -40,7 +40,7 @@ def delete_message_safe(messages: [[Message], Message], revoke=True):
             pass
 
 
-def message_link(message):
+def message_link(message: Message):
     if message.chat.username:
         return 'https://t.me/{}/{}'.format(message.chat.username, message.message_id)
     else:
