@@ -1,0 +1,12 @@
+[pyrogram]
+session_name = "secret-santa-bot"
+api_id = 12345
+api_hash = ""
+bot_token = ""
+workers = 8 # should be high only when you expect to handle a lot of requests. Pyrogram's default is 4
+
+[bot]
+chat_max_members = 30 # the bot won't work in chats with more than this number of members
+
+[issues]
+report_to = "" # shoudl be an url

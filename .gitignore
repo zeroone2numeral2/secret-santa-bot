@@ -1,0 +1,13 @@
+.idea
+venv/
+idea
+*.db
+*.sqlite
+*.pyc
+
+*.session-journal
+*.session
+
+*.log
+
+config.toml
