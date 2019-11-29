@@ -1,4 +1,4 @@
-# Secret Santa Telegram bot 🤫🎅🏼🎁
+# Secret Santa Telegram bot 🤫🎅🏼
 
 Extremely simple and straightforward Telegram bot to organize a [Secret Santa](http://secret-santa.urbanup.com/4845681) in a Telegram group chat.
 
