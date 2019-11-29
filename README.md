@@ -10,7 +10,7 @@ This was actually suggested by a friend of mine, who was wondering whether there
 
 If you have a Telegram chat with your friends already set up, a Telegram bot is a pretty handy solution to solve the problem.
 
-To avoid headhaches I've decided to go down the easiest path possible: since the Telegram bot API doesn't allow bots to fetch the members list of a chat, I went for [Pyrogram](https://docs.pyrogram.org/), which is a Python MTProto client that allows to log-in as a bot and communicate with the servers via TCP, bypassing Telegram's HTTP API. Authorizing your bot account that way, Telegram will allow you to use some API methods which are usually not available through the bot API - such as fetching a chat's members list. Which is why this bot doesn't need to store any information to send Secret Santa matches to the participants. Thanks, Pyrogram!
+To avoid headaches I've decided to go down the easiest path possible: since the [Telegram bot API](https://core.telegram.org/bots/api) doesn't allow bots to fetch the members list of a chat, I went for [Pyrogram](https://docs.pyrogram.org/), which is a Python [MTProto](https://core.telegram.org/mtproto) client that allows to log-in as a bot and communicate with the servers via TCP, bypassing Telegram's HTTP API. Authorizing your bot account that way, Telegram will allow you to use some API methods which are usually not available through the bot API - such as fetching a chat's members list. Which is why this bot doesn't need to store any information to send Secret Santa matches to the participants. Thanks, Pyrogram!
 
 ### Installation
 
