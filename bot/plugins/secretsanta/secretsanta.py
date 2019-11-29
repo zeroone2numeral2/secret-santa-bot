@@ -107,7 +107,7 @@ def on_pair(client: Client, message: Message):
         )
         return
 
-    chat_message = message.reply('{} <i>Pairing users...</i>'.format(Emoji.HAMMER_AND_WRENCH))
+    chat_message = message.reply('{} <i>Matching users...</i>'.format(Emoji.HAMMER_AND_WRENCH))
 
     # store the names of the users we haven't been able to contact
     blocked_us = list()
