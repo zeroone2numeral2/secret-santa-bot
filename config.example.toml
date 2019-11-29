@@ -8,5 +8,7 @@ workers = 8 # should be high only when you expect to handle a lot of requests. P
 [bot]
 chat_max_members = 30 # the bot won't work in chats with more than this number of members
 
-[issues]
-report_to = "" # shoudl be an url
+[public]
+report_errors_to = "" # should be an url
+source_code = "" # url too
+draw_id = false # include the draw ID in the Secret Santa's message

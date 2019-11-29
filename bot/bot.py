@@ -1,6 +1,7 @@
 import logging
 
 from pyrogram import Client
+from pyrogram import User
 from pyrogram import __version__
 from pyrogram.api.all import layer
 
@@ -21,7 +22,8 @@ class Bot(Client):
             workdir='.',
         )
 
-        self.me = None
+        # noinspection PyTypeChecker
+        self.me: User = None
         self.is_bot = None
 
     def start(self):

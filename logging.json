@@ -28,20 +28,14 @@
         },
         "pyrogram": {
             "level": "WARNING"
+        },
+        "plugin:secretsanta": {
+            "level": "INFO"
         }
     },
     "formatters": {
-        "short": {
-            "format": "[%(name)s][%(levelname)s] >>> %(message)s"
-        },
         "standard": {
             "format": "[%(asctime)s][%(name)s:%(lineno)d][%(funcName)s][%(levelname)s] >>> %(message)s"
-        },
-        "filename": {
-            "format": "[%(asctime)s][%(filename)s:%(lineno)d][%(levelname)s] >>> %(message)s"
-        },
-        "long": {
-            "format": "[%(asctime)s][%(name)s][%(pathname)s:%(funcName)s:%(lineno)d][%(levelname)s] >>> %(message)s"
         }
     }
 }

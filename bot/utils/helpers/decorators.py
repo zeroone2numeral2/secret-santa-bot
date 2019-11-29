@@ -77,7 +77,13 @@ def catch_exceptions(answer=True, answer_on_flood_wait_only=False):
                 error_str = str(e) or 'you fucked up big time, buddy'
                 logger.error('error while running handler callback: %s', error_str, exc_info=True)
                 if answer:
-                    message.reply('Whoops, something went wrong: ```{}```'.format(error_str), quote=True)
+                    text = 'Whoops, something went wrong: <code>{}</code>'.format(error_str)
+                    if config.public.report_errors_to:
+                        text += '\nIf you think this is a bug, please report the error <a href="">here</a>!'.format(
+                            config.public.report_errors_to
+                        )
+
+                    message.reply(text, quote=True)
 
         return wrapped
 

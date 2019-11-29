@@ -22,9 +22,11 @@ logger = logging.getLogger('plugin:' + __plugin__)
 
 
 SECRET_SANTA_MESSAGE = """<a href="{message_link}">{chat_name}'s Secret Santa draw</a>: you are \
-{receiver_mention}'s Secret Santa! {santa}{wrapped_gift}{christmas_tree}"""
+{receiver_mention}'s Secret Santa! {santa}{wrapped_gift}{christmas_tree}
 
-PAIR_RESULT = """I've been able to match <b>{number}</b> users! \
+{draw_id}"""
+
+PAIR_RESULT = """I've been able to match <b>{number}</b> people! \
 {father_christmas}{father_christmas}{father_christmas}
 You should have received a message with the name of your match, go check it out :)"""
 
@@ -43,7 +45,14 @@ def reply_to_our_message_test(_, message):
     return message.reply_to_message and message.reply_to_message.from_user.id == bot.me.id
 
 
+def bot_command_extended_test(_, message):
+    if message.text:
+        return bool(re.search(r'^\/(?:pair|match|draw)(?:@{})?$'.format(bot.me.username), message.text, re.I))
+
+
 reply_to_our_message_filter = Filters.create(reply_to_our_message_test)
+
+bot_command_extended_filter = Filters.create(bot_command_extended_test)
 
 
 def list_to_text(users):
@@ -64,14 +73,21 @@ def list_to_text(users):
 
 @Client.on_message(
     Filters.text & Filters.group & (
-        Filters.command(['pair', 'match'], prefixes=['/']) | (reply_to_our_message_filter & Filters.regex(r'^(?:pair|match).*', flags=re.I))
+        bot_command_extended_filter
+        | (reply_to_our_message_filter & Filters.regex(r'^(?:pair|match|draw)\b.*', flags=re.I))
     )
 )
 @decorators.catch_exceptions(answer_on_flood_wait_only=True)
 def on_pair(client: Client, message: Message):
     logger.debug('entered handler')
 
-    all_members = client.get_chat_members(message.chat.id, limit=100)
+    limit = config.bot.chat_max_members + 20 + 20 + 3  # 20 bots + 20 possible deleted accounts + 3 padding
+    if limit > 200:
+        limit = 200
+
+    logger.info('draw id %d: limit %d', message.message_id, limit)
+
+    all_members = client.get_chat_members(message.chat.id, limit=limit)
 
     valid_members = list()
     for member in all_members:
@@ -156,7 +172,8 @@ def on_pair(client: Client, message: Message):
             wrapped_gift=Emoji.WRAPPED_GIFT,
             santa=Emoji.SANTA_CLAUS_MEDIUM_LIGHT_SKIN_TONE,
             christmas_tree=Emoji.CHRISTMAS_TREE,
-            message_link=utils.message_link(chat_message)
+            message_link=utils.message_link(chat_message),
+            draw_id='<code>draw ID: {}</code>'.format(message.message_id) if config.public.draw_id else ''
         )
 
         logger.debug('sending pairing to %s (%d): %s', user.first_name, user.id, pick.first_name)
