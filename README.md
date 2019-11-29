@@ -4,7 +4,7 @@ Extremely simple and straightforward Telegram bot to organize a [Secret Santa](h
 
 I was pretty shocked to discover there's not a single basic implementation of a Secret Santa bot on Telegram, so I've decided to spend a couple of hours on this small bot. I've tried to keep it as simple and gimmick-free as possible. The idea is simple: add the bot to a group chat, ask the members to start it, and start the Secret Santas draw. Easy as that.
 
-### A bit of background
+## A bit of background
 
 This was actually suggested by a friend of mine, who was wondering whether there was a way to do a Secret Santa draw without having all your friends to gather at the same place - which, for various reasons, might be an impossible task sometimes.
 
