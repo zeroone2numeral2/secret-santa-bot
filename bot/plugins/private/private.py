@@ -55,7 +55,7 @@ def on_start(_, message: Message):
     if config.public.source_code:
         text += '. Source code <a href="{}">here</a>'.format(config.public.source_code)
 
-    message.reply(text)
+    message.reply(text, disable_web_page_preview=True)
 
 
 @Client.on_message(Filters.text & Filters.private & Filters.command(['help'], prefixes=['/']))
@@ -71,4 +71,4 @@ def on_help(_, message: Message):
 def on_group_command(_, message: Message):
     logger.debug('entered handler')
 
-    message.reply(GROUP_COMMAND.format(Emoji.CROSS_MARK))
+    message.reply(GROUP_COMMAND.format(Emoji.CROSS_MARK), disable_web_page_preview=True)
