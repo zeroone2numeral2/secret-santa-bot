@@ -19,7 +19,7 @@ logger = logging.getLogger('plugin:' + __plugin__)
 NEW_CHAT_MESSAGE = """Hello! I'm a bot that helps people organize a Secret Santa {shhh}{santa}{gift} \
 Just answer to this message with "match" to start the Secret Santa draw!
 
-<b>Important: everyone who's willing to partecipate must start me in private first, otherwise I won't be \
+<b>Important: everyone who's willing to participate must start me in private first, otherwise I won't be \
 able to send them their match!</b>"""
 
 
